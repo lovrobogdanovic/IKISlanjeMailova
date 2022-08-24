@@ -55,21 +55,27 @@ namespace IKISlanjeMailova
             wd.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
 
 
-            //klik na "nova poruka", zatim čeka 2 sekundi da se otvori prozor (mjera opreza da nebi došlo do nepotrebnih errora)
 
-            wd.FindElement(poruka).Click();
-            wd.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
+            //definira se petlja za slanje 10 mailova
 
+            for(int i = 1; i <= 3; i++){
 
-            //test unosi primatelja, predmet i sadržaj, zatim klika pošalji
+                //test unosi primatelja, predmet i sadržaj, zatim klika pošalji
+                wd.FindElement(poruka).Click();
 
-            wd.FindElement(primatelj).SendKeys("lovro.bogdanovic@gmail.com");
+                wd.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(3);
 
-            wd.FindElement(predmet).SendKeys("Selenium testiranje IKI razgovor");
+                wd.FindElement(primatelj).SendKeys("lbogdanovic@ffos.hr");
 
-            wd.FindElement(sadrzaj).SendKeys("Ovaj je mail generirao Selenium");
+                wd.FindElement(predmet).SendKeys("Selenium testiranje IKI razgovor");
 
-            wd.FindElement(posalji).Click();
+                wd.FindElement(sadrzaj).SendKeys("Ovaj je mail generirao Selenium");
+
+                wd.FindElement(posalji).Click();
+
+                wd.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(4);
+
+            }
 
 
 
