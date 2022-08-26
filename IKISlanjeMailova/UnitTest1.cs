@@ -58,14 +58,14 @@ namespace IKISlanjeMailova
 
             //definira se petlja za slanje 10 mailova
 
-            for(int i = 1; i <= 3; i++){
+            for(int i = 1; i <= 11; i++){
 
                 //test unosi primatelja, predmet i sadržaj, zatim klika pošalji
                 wd.FindElement(poruka).Click();
 
                 wd.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(3);
 
-                wd.FindElement(primatelj).SendKeys("lbogdanovic@ffos.hr");
+                wd.FindElement(primatelj).SendKeys("tjakopec@ffos.hr");
 
                 wd.FindElement(predmet).SendKeys("Selenium testiranje IKI razgovor");
 
@@ -73,10 +73,17 @@ namespace IKISlanjeMailova
 
                 wd.FindElement(posalji).Click();
 
-                wd.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(4);
+                wd.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
+
+
+
+
 
             }
 
+            wd.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+
+            wd.Quit();
 
 
 
